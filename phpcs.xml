@@ -1,0 +1,72 @@
+<?xml version="1.0"?>
+<ruleset name="Laravel Standards">
+    <description>PSR-2 for Laravel Project</description>
+    <file>./app</file>
+    <file>./database</file>
+    <file>./routes</file>
+    <file>./tests</file>
+    <!-- Ignore line ending because different developer may use different OS -->
+    <rule ref="PSR2">
+        <exclude name="Generic.Files.LineEndings"/>
+    </rule>
+
+    <rule ref="Squiz.NamingConventions.ValidVariableName">
+        <exclude-pattern>./app/Models</exclude-pattern>
+        <exclude-pattern>./app/Http/Controllers/Client</exclude-pattern>
+        <exclude-pattern>./app/Http/Controllers/Api</exclude-pattern>
+        <exclude-pattern>./app/Http/Resources</exclude-pattern>
+        <exclude-pattern>./app/Service</exclude-pattern>
+        <exclude-pattern>./app/Repository</exclude-pattern>
+        <exclude-pattern>./app/Observers</exclude-pattern>
+        <exclude-pattern>./app/Console</exclude-pattern>
+        <exclude-pattern>./app/Mail</exclude-pattern>
+    </rule>
+    <rule ref="Generic.NamingConventions.CamelCapsFunctionName"/>
+    <rule ref="Generic.Debug.JSHint"/>
+    <rule ref="Generic.Debug.CSSLint"/>
+    <rule ref="Generic.NamingConventions.UpperCaseConstantName"/>
+    <!-- Ignore missing namespace rule for Laravel 5.2, because this version doesn't need in those files -->
+    <rule ref="PSR1.Classes.ClassDeclaration.MissingNamespace">
+        <exclude-pattern>./tests</exclude-pattern>
+        <exclude-pattern>./database</exclude-pattern>
+    </rule>
+    <rule ref="Squiz.NamingConventions.ValidVariableName">
+        <exclude-pattern>./tests</exclude-pattern>
+    </rule>
+
+    <rule ref="Generic.Files.LineLength">
+    <properties>
+        <property name="lineLimit" value="180"/>
+        <property name="absoluteLineLimit" value="0"/>
+    </properties>
+    </rule>
+
+    <rule ref="Squiz.Scope.MemberVarScope"/>
+    <rule ref="Squiz.Scope.StaticThisUsage"/>
+
+
+    <rule ref="Generic.CodeAnalysis.EmptyStatement"/>
+    <rule ref="Generic.Formatting.DisallowMultipleStatements"/>
+    <rule ref="Generic.Formatting.SpaceAfterCast"/>
+    <rule ref="Generic.WhiteSpace.DisallowTabIndent"/>
+    <rule ref="Generic.Metrics.NestingLevel">
+        <exclude-pattern>./app/Repository/DeviceRepository.php</exclude-pattern>
+        <exclude-pattern>./app/Console/Commands/ProfitNoticeCommand.php</exclude-pattern>
+        <properties>
+            <property name="nestingLevel" value="3"/>
+            <property name="absoluteNestingLevel" value="6"/>
+        </properties>
+    </rule>
+    <rule ref="Generic.WhiteSpace.ScopeIndent"/>
+    <rule ref="Squiz.WhiteSpace.CastSpacing"/>
+    <rule ref="Squiz.WhiteSpace.ControlStructureSpacing"/>
+    <rule ref="Squiz.WhiteSpace.LanguageConstructSpacing"/>
+    <rule ref="Squiz.WhiteSpace.LogicalOperatorSpacing"/>
+    <rule ref="Squiz.WhiteSpace.OperatorSpacing"/>
+    <rule ref="Squiz.WhiteSpace.PropertyLabelSpacing"/>
+    <rule ref="Squiz.WhiteSpace.ScopeClosingBrace"/>
+    <rule ref="Squiz.WhiteSpace.ScopeKeywordSpacing"/>
+    <rule ref="Squiz.WhiteSpace.SemicolonSpacing"/>
+
+    <exclude-pattern>**/*.js</exclude-pattern>
+</ruleset>
