@@ -86,9 +86,9 @@ jobs:
         uses: deployphp/action@v1
         with:
           private-key: ${{ secrets.STG_PRIVATE_KEY }}
-          dep: deploy retty.dev
+          dep: deploy app.dev
           ssh-config: |
-            Host retty.dev
+            Host app.dev
               HostName ${{ secrets.STG_HOST }}
               User ${{ secrets.STG_USER }}
               StrictHostKeyChecking no
