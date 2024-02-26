@@ -12,8 +12,8 @@
 
     <rule ref="Squiz.NamingConventions.ValidVariableName">
         <exclude-pattern>./app/Models</exclude-pattern>
-        <exclude-pattern>./app/Http/Controllers/Client</exclude-pattern>
-        <exclude-pattern>./app/Http/Controllers/Api</exclude-pattern>
+        <!-- <exclude-pattern>./app/Http/Controllers/Client</exclude-pattern> -->
+        <!-- <exclude-pattern>./app/Http/Controllers/Api</exclude-pattern> -->
         <exclude-pattern>./app/Http/Resources</exclude-pattern>
         <exclude-pattern>./app/Service</exclude-pattern>
         <exclude-pattern>./app/Repository</exclude-pattern>
@@ -27,11 +27,11 @@
     <rule ref="Generic.NamingConventions.UpperCaseConstantName"/>
     <!-- Ignore missing namespace rule for Laravel 5.2, because this version doesn't need in those files -->
     <rule ref="PSR1.Classes.ClassDeclaration.MissingNamespace">
-        <exclude-pattern>./tests</exclude-pattern>
+        <!-- <exclude-pattern>./tests</exclude-pattern> -->
         <exclude-pattern>./database</exclude-pattern>
     </rule>
     <rule ref="Squiz.NamingConventions.ValidVariableName">
-        <exclude-pattern>./tests</exclude-pattern>
+        <!-- <exclude-pattern>./tests</exclude-pattern> -->
     </rule>
 
     <rule ref="Generic.Files.LineLength">
