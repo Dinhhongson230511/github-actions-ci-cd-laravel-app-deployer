@@ -21,7 +21,7 @@ task('npm:run', function () {
         && npm install && npm run build');
 });
 task('push:slack:done', function () {
-    run('{{slack_push_done}} $SLACK_PUSH_CHANNEL');
+    // run('{{slack_push_done}} $SLACK_PUSH_CHANNEL');
 });
 
 task('deploy:vendors', function () {
@@ -30,7 +30,7 @@ task('deploy:vendors', function () {
 
 // Hosts
 host('app.dev')
-    ->set('server_name', 'retty.dev - $APP_NAME')
+    ->set('server_name', 'app.dev - $APP_NAME')
     ->set('server_url', '$APP_URL')
     ->set('branch', 'master')
     ->set('deploy_path', '/var/www/html/laravel-app/github-actions-ci-cd-laravel-app-deployer');
