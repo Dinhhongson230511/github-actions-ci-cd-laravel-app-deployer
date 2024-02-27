@@ -10,7 +10,7 @@ add('shared_files', ['.env']);
 add('shared_dirs', []);
 add('writable_dirs', []);
 
-set('dotenv', '{{current_path}}/.env');
+// set('dotenv', '{{current_path}}/.env');
 set('slack_push_done', 'curl -X POST --data-urlencode "payload={\"channel\": \"#retty-inshokuten-yoyaku\", \"username\": \"Bot\", \"text\": \"@channel [{{ server_name }}] Server {{ server_url }} has been successfully deployed!\", \"icon_emoji\": \":ghost:\"}"');
 
 // Custom Tasks
