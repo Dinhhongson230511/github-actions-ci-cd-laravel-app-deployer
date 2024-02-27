@@ -15,7 +15,7 @@ set('slack_push_done', 'curl -X POST --data-urlencode "payload={\"channel\": \"#
 
 writeln('Current Path: {{current_path}}');
 writeln('release_path: {{release_path}}');
-writeln('APP_NAME: $APP_NAME');
+// writeln('APP_NAME: $APP_NAME');
 // Custom Tasks
 task('npm:run', function () {
     run('cd {{release_path}} \
