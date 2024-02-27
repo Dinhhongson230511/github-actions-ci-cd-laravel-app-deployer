@@ -9,69 +9,68 @@ on:
       - master
 
 jobs:
-  # php-cs:
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - uses: actions/checkout@v3
-  #     - name: Setup PHP
-  #       uses: shivammathur/setup-php@master
-  #       with:
-  #         php-version: "8.1"
-  #         php_extensions: mbstring bcmath http gd zip
-  #         version: 2
-  #     - name: Laravel Setup Testing Environtment
-  #       run: |
-  #         cp .env.example .env
-  #         composer install
-  #         php artisan key:generate
-  #         chmod -R 777 storage bootstrap/cache
-  #     - name: Check coding convention by PHP_CodeSniffer
-  #       run: ./vendor/bin/phpcs
-  #     # - name: PHP mess detector
-  #     #   run: ./vendor/bin/phpmd app,database,routes,tests text phpmd.xml
-  # php-unit:
-  #   runs-on: ubuntu-latest
-  #   services:
-  #     mysql:
-  #       image: mysql:8.0
-  #       env:
-  #         MYSQL_DATABASE: maverickpass_testing
-  #         MYSQL_ROOT_PASSWORD: root
-  #         MYSQL_ALLOW_EMPTY_PASSWORD: yes
-  #       ports:
-  #         - 3306:3306
-  #       options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
-  #   steps:
-  #     - uses: actions/checkout@v3
-  #       with:
-  #         # Disabling shallow clone is recommended for improving relevancy of reporting
-  #         fetch-depth: 0
-  #     - name: Setup PHP
-  #       uses: shivammathur/setup-php@v2
-  #       with:
-  #         php-version: 8.1
-  #         extensions: mbstring, bcmath, php-http, gd, zip
-  #         tools: composer:v2
-  #     - name: Laravel Setup Testing Environtment
-  #       run: |
-  #         cp .env.example .env
-  #         composer install
-  #         php artisan key:generate
-  #         chmod -R 777 storage bootstrap/cache
-  #     - name: npm install and build
-  #       run: |
-  #         npm install
-  #         npm run build
-  #     - name: Run Tests
-  #       run: |
-  #         php artisan migrate --env=testing --force
-  #         php artisan key:generate
-  #         ./vendor/bin/phpunit --coverage-clover=coverage-report.xml
-
+  php-cs:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup PHP
+        uses: shivammathur/setup-php@master
+        with:
+          php-version: "8.1"
+          php_extensions: mbstring bcmath http gd zip
+          version: 2
+      - name: Laravel Setup Testing Environtment
+        run: |
+          cp .env.example .env
+          composer install
+          php artisan key:generate
+          chmod -R 777 storage bootstrap/cache
+      - name: Check coding convention by PHP_CodeSniffer
+        run: ./vendor/bin/phpcs
+      # - name: PHP mess detector
+      #   run: ./vendor/bin/phpmd app,database,routes,tests text phpmd.xml
+  php-unit:
+    runs-on: ubuntu-latest
+    services:
+      mysql:
+        image: mysql:8.0
+        env:
+          MYSQL_DATABASE: maverickpass_testing
+          MYSQL_ROOT_PASSWORD: root
+          MYSQL_ALLOW_EMPTY_PASSWORD: yes
+        ports:
+          - 3306:3306
+        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          # Disabling shallow clone is recommended for improving relevancy of reporting
+          fetch-depth: 0
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: 8.1
+          extensions: mbstring, bcmath, php-http, gd, zip
+          tools: composer:v2
+      - name: Laravel Setup Testing Environtment
+        run: |
+          cp .env.example .env
+          composer install
+          php artisan key:generate
+          chmod -R 777 storage bootstrap/cache
+      - name: npm install and build
+        run: |
+          npm install
+          npm run build
+      - name: Run Tests
+        run: |
+          php artisan migrate --env=testing --force
+          php artisan key:generate
+          ./vendor/bin/phpunit --coverage-clover=coverage-report.xml
   deploy-stagging:
     name: Deploy Stagging
     runs-on: ubuntu-latest
-    # needs: [php-cs, php-unit]
+    needs: [php-cs, php-unit]
     if: github.ref == 'refs/heads/master'
     steps:
       - uses: actions/checkout@v2

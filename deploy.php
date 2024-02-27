@@ -20,6 +20,7 @@ task('npm:run', function () {
         && [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" \
         && npm install && npm run build');
 });
+
 task('push:slack:done', function () {
     run('{{slack_push_done}} $SLACK_PUSH_CHANNEL');
 });
