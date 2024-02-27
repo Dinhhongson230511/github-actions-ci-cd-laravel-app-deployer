@@ -24,6 +24,7 @@ task('npm:run', function () {
         && npm install && npm run build');
 });
 task('push:slack:done', function () {
+    writeln('Done!!');
     // run('{{slack_push_done}} $SLACK_PUSH_CHANNEL');
 });
 
@@ -37,12 +38,6 @@ host('app.dev')
     ->set('server_url', '$APP_URL')
     ->set('branch', 'master')
     ->set('deploy_path', '/var/www/html/laravel-app/github-actions-ci-cd-laravel-app-deployer');
-
-// host('retty.prd')
-//     ->set('server_name', 'retty.prd - $APP_NAME')
-//     ->set('server_url', '$APP_URL')
-//     ->set('branch', 'prd')
-//     ->set('deploy_path', '/var/www/app/be');
 
 // Hooks customize task for laravel recipes
 after('deploy:update_code', 'npm:run');
