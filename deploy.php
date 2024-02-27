@@ -6,7 +6,7 @@ require 'recipe/laravel.php';
 // Config
 set('repository', 'git@github.com:Dinhhongson230511/github-actions-ci-cd-laravel-app-deployer.git');
 set('keep_releases', 2);
-add('shared_files', []);
+add('shared_files', ['.env']);
 add('shared_dirs', []);
 add('writable_dirs', []);
 
