@@ -13,11 +13,11 @@ add('writable_dirs', []);
 set('dotenv', '{{current_path}}/.env');
 set('slack_push_done', 'curl -X POST --data-urlencode "payload={\"channel\": \"#retty-inshokuten-yoyaku\", \"username\": \"Bot\", \"text\": \"@channel [{{ server_name }}] Server {{ server_url }} has been successfully deployed!\", \"icon_emoji\": \":ghost:\"}"');
 
-writeln('Current Path: {{current_path}}');
-writeln('release_path: {{release_path}}');
-// writeln('APP_NAME: $APP_NAME');
 // Custom Tasks
 task('npm:run', function () {
+    writeln('Current Path: {{current_path}}');
+    writeln('release_path: {{release_path}}');
+    writeln('APP_NAME: $APP_NAME');
     run('cd {{release_path}} \
         && export NVM_DIR="$HOME/.nvm" \
         && [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" \
